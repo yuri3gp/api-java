@@ -43,4 +43,8 @@ public class UserService {
         PageRequest pageRequest = PageRequest.of(page, size);
         return userRepository.findAll(pageRequest);
     }
+
+    public Page<User> getAllUsers(PageRequest pageRequest) {
+        return null;
+    }
 }

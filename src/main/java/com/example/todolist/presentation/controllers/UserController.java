@@ -3,6 +3,8 @@ package com.example.todolist.presentation.controllers;
 import com.example.todolist.application.services.UserService;
 import com.example.todolist.domain.model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,8 +55,10 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
+    public ResponseEntity<Page<User>> getAllUsers(@RequestParam(defaultValue = "0", name = "PAGE") int page,
+                                                  @RequestParam(defaultValue = "10") int pageSize) {
+        PageRequest pageRequest = PageRequest.of(page, pageSize);
+        Page<User> users = userService.getAllUsers(pageRequest);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }
