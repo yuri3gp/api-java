@@ -1,7 +1,5 @@
-package com.example.todolist.presentation.controllers;
+package com.example.todolist.modules.user;
 
-import com.example.todolist.application.services.UserService;
-import com.example.todolist.domain.model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;

@@ -1,7 +1,5 @@
-package com.example.todolist.application.services;
+package com.example.todolist.modules.user;
 
-import com.example.todolist.domain.model.entities.User;
-import com.example.todolist.domain.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

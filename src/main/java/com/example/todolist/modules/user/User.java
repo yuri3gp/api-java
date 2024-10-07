@@ -1,4 +1,4 @@
-package com.example.todolist.domain.model.entities;
+package com.example.todolist.modules.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
