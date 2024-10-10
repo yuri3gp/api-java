@@ -1,11 +1,7 @@
 package com.example.todolist.modules.user;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -20,6 +16,11 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @Column(name = "active", nullable = false)
+    private boolean active = true;
 
     public User() {
         // Construtor padrão necessário para JPA
@@ -52,5 +53,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setActive(boolean b) {
+        this.active = b;
+    }
+
+    public boolean getActive(){
+        return this.active;        
     }
 }

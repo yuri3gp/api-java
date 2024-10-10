@@ -34,7 +34,10 @@ public class UserService {
     }
 
     public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        user.setActive(false);
+        userRepository.save(user);
     }
 
     public Page<User> getAllUsers(int page, int size) {
